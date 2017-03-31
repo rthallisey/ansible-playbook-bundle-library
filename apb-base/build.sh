@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t ansibleapp/ansibleapp-base .
+docker build -t ansibleplaybookbundle/apb-base .

@@ -9,7 +9,7 @@ RUN yum -y update \
 RUN echo "localhost ansible_connection=local" >> /etc/ansible/hosts
 RUN sed -i 's|#roles_path.*$|roles_path = /opt/ansible/roles|' /etc/ansible/ansible.cfg
 
-RUN mkdir /opt/ansibleapp
+RUN mkdir /opt/apb
 
 COPY oc-login.sh /usr/bin
 COPY entrypoint.sh /usr/bin
