@@ -1,5 +1,5 @@
 id: f32de3bc-3225-429a-b23b-cef47ca1d25b
-name: ansibleapp/etherpad-ansibleapp
+name: ansibleplaybookbundle/etherpad-apb
 description: Note taking web application
 bindable: true
 async: "optional"

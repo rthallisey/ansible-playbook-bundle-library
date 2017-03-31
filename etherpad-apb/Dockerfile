@@ -1,25 +1,25 @@
-FROM ansibleapp/ansibleapp-base
+FROM ansibleplaybookbundle/apb-base
 # MAINTAINER {{ $MAINTAINER }}
 
-LABEL "com.redhat.ansibleapp.version"="0.1.0"
-LABEL "com.redhat.ansibleapp.spec"=\
-"aWQ6IGYzMmRlM2JjLTMyMjUtNDI5YS1iMjNiLWNlZjQ3Y2ExZDI1YgpuYW1lOiBhbnNpYmxlYXBw\
-L2V0aGVycGFkLWFuc2libGVhcHAKZGVzY3JpcHRpb246IE5vdGUgdGFraW5nIHdlYiBhcHBsaWNh\
-dGlvbgpiaW5kYWJsZTogdHJ1ZQphc3luYzogIm9wdGlvbmFsIgpwYXJhbWV0ZXJzOgogIC0gbmFt\
-ZTogZGF0YWJhc2VfdXNlcgogICAgZGVzY3JpcHRpb246IERhdGFiYXNlIFVzZXIKICAgIGRlZmF1\
-bHQ6IGV0aGVycGFkCiAgLSBuYW1lOiBkYXRhYmFzZV9wYXNzd29yZAogICAgZGVzY3JpcHRpb246\
-IERhdGFiYXNlIFBhc3N3b3JkCiAgLSBuYW1lOiBkYXRhYmFzZV9uYW1lCiAgICBkZXNjcmlwdGlv\
-bjogRGF0YWJhc2UgTmFtZQogICAgZGVmYXVsdDogZXRoZXJwYWQKICAtIG5hbWU6IGRhdGFiYXNl\
-X2hvc3QKICAgIGRlc2NyaXB0aW9uOiBEYXRhYmFzZSBzZXJ2aWNlIGhvc3RuYW1lL2lwCiAgICBk\
-ZWZhdWx0OiBtYXJpYWRiCiAgLSBuYW1lOiByb290X3Bhc3N3b3JkCiAgICBkZXNjcmlwdGlvbjog\
-cm9vdCBwYXNzd29yZCBmb3IgbWFyaWFkYiBjb250YWluZXIKICAtIG5hbWU6IGFwcGxpY2F0aW9u\
-X3Bhc3N3b3JkCiAgICBkZXNjcmlwdGlvbjogUGFzc3dvcmQgZm9yIGV0aGVycGFkLWxpdGUgYWRt\
-aW4gaW50ZXJmYWNlCiAgLSBuYW1lOiBzZXNzaW9uX2tleQogICAgZGVzY3JpcHRpb246IEtleSBm\
-b3IgcmVjb3ZlcmluZyBzZXNzaW9uLiBXaWxsIGRlZmF1bHQgdG8gcmFuZG9tIFVVSUQKICAgIHJl\
-cXVpcmVkOiBmYWxzZQo="
+LABEL "com.redhat.apb.version"="0.1.0"
+LABEL "com.redhat.apb.spec"=\
+"aWQ6IGYzMmRlM2JjLTMyMjUtNDI5YS1iMjNiLWNlZjQ3Y2ExZDI1YgpuYW1lOiBhbnNpYmxlcGxh\
+eWJvb2tidW5kbGUvZXRoZXJwYWQtYXBiCmRlc2NyaXB0aW9uOiBOb3RlIHRha2luZyB3ZWIgYXBw\
+bGljYXRpb24KYmluZGFibGU6IHRydWUKYXN5bmM6ICJvcHRpb25hbCIKcGFyYW1ldGVyczoKICAt\
+IG5hbWU6IGRhdGFiYXNlX3VzZXIKICAgIGRlc2NyaXB0aW9uOiBEYXRhYmFzZSBVc2VyCiAgICBk\
+ZWZhdWx0OiBldGhlcnBhZAogIC0gbmFtZTogZGF0YWJhc2VfcGFzc3dvcmQKICAgIGRlc2NyaXB0\
+aW9uOiBEYXRhYmFzZSBQYXNzd29yZAogIC0gbmFtZTogZGF0YWJhc2VfbmFtZQogICAgZGVzY3Jp\
+cHRpb246IERhdGFiYXNlIE5hbWUKICAgIGRlZmF1bHQ6IGV0aGVycGFkCiAgLSBuYW1lOiBkYXRh\
+YmFzZV9ob3N0CiAgICBkZXNjcmlwdGlvbjogRGF0YWJhc2Ugc2VydmljZSBob3N0bmFtZS9pcAog\
+ICAgZGVmYXVsdDogbWFyaWFkYgogIC0gbmFtZTogcm9vdF9wYXNzd29yZAogICAgZGVzY3JpcHRp\
+b246IHJvb3QgcGFzc3dvcmQgZm9yIG1hcmlhZGIgY29udGFpbmVyCiAgLSBuYW1lOiBhcHBsaWNh\
+dGlvbl9wYXNzd29yZAogICAgZGVzY3JpcHRpb246IFBhc3N3b3JkIGZvciBldGhlcnBhZC1saXRl\
+IGFkbWluIGludGVyZmFjZQogIC0gbmFtZTogc2Vzc2lvbl9rZXkKICAgIGRlc2NyaXB0aW9uOiBL\
+ZXkgZm9yIHJlY292ZXJpbmcgc2Vzc2lvbi4gV2lsbCBkZWZhdWx0IHRvIHJhbmRvbSBVVUlECiAg\
+ICByZXF1aXJlZDogZmFsc2UK"
 ADD ansible /opt/ansible
-ADD ansibleapp /opt/ansibleapp
+ADD apb /opt/apb
 
-RUN useradd -u 1001 -r -g 0 -M -b /opt/ansibleapp -s /sbin/nologin -c "ansibleapp user" ansibleapp
-RUN chown -R 1001:0 /opt/{ansible,ansibleapp}
+RUN useradd -u 1001 -r -g 0 -M -b /opt/apb -s /sbin/nologin -c "apb user" apb
+RUN chown -R 1001:0 /opt/{ansible,apb}
 USER 1001

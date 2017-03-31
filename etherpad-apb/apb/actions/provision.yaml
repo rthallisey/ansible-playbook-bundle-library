@@ -1,7 +1,7 @@
-- name: Deploy etherpad-ansibleapp to  openshift
+- name: Deploy etherpad-apb to  openshift
   hosts: localhost
   gather_facts: false
   connection: local
   roles:
-  - role: etherpad-ansibleapp-openshift
+  - role: etherpad-apb-openshift
     playbook_debug: false
