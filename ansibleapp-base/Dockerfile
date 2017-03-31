@@ -1,8 +1,8 @@
 FROM centos:7
-MAINTAINER Erik Nelson "ernelson@redhat.com"
+MAINTAINER Ansible Playbook Bundle Mantainers
 
-RUN yum -y update \
- && yum -y install epel-release centos-release-openshift-origin \
+RUN yum -y install epel-release centos-release-openshift-origin \
+ && yum -y update \
  && yum -y install origin origin-clients net-tools bind-utils ansible \
  && yum clean all
 
@@ -11,7 +11,6 @@ RUN sed -i 's|#roles_path.*$|roles_path = /opt/ansible/roles|' /etc/ansible/ansi
 
 RUN mkdir /opt/ansibleapp
 
-COPY oc-login.sh /usr/bin
-COPY entrypoint.sh /usr/bin
+COPY oc-login.sh entrypoint.sh /usr/bin/
 
 ENTRYPOINT ["entrypoint.sh"]
