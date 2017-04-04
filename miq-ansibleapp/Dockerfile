@@ -1,5 +1,5 @@
 FROM ansibleapp/ansibleapp-base
-# MAINTAINER {{ $MAINTAINER }}
+MAINTAINER Ansible Playbook Bundle Community
 
 LABEL "com.redhat.ansibleapp.version"="0.1.0"
 LABEL "com.redhat.ansibleapp.spec"=\
@@ -32,9 +32,5 @@ cGU6IHN0cmluZwogICAgZGVmYXVsdDogYWRtaW4K"
 ADD ansible /opt/ansible
 ADD ansibleapp /opt/ansibleapp
 
-RUN yum -y install epel-release centos-release-openshift-origin \
- && yum -y install origin
-
-RUN useradd -u 1001 -r -g 0 -M -b /opt/ansibleapp -s /sbin/nologin -c "ansibleapp user" ansibleapp
-RUN chown -R 1001:0 /opt/{ansible,ansibleapp}
-USER 1001
+RUN chown -R ansibleapp: /opt/{ansible,ansibleapp}
+USER ansibleapp

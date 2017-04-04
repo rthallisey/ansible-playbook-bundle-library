@@ -1,5 +1,5 @@
 FROM ansibleapp/ansibleapp-base
-MAINTAINER Erik Nelson <ernelson@redhat.com>
+MAINTAINER Ansible Playbook Bundle Community
 
 LABEL "com.redhat.ansibleapp.version"="0.1.0"
 LABEL "com.redhat.ansibleapp.spec"=\
@@ -29,8 +29,5 @@ IHR5cGU6IHN0cmluZwogICAgZGVmYXVsdDogZnVzb3ItZ3Vlc3Rib29rLWFuc2libGVhcHAK"
 ADD ansible /opt/ansible
 ADD ansibleapp /opt/ansibleapp
 
-RUN useradd -u 1001 -r -g 0 -M -b /opt/ansibleapp -s /sbin/nologin -c "ansibleapp user" ansibleapp
-RUN chown -R ansibleapp: /opt/{ansible,ansibleapp} \
-    && chown -R ansibleapp: /etc/asb \
-    && chmod 750 /etc/asb
-USER 1001
+RUN chown -R ansibleapp: /opt/{ansible,ansibleapp}
+USER ansibleapp

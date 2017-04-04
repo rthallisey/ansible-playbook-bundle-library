@@ -1,5 +1,5 @@
 FROM ansibleapp/ansibleapp-base
-# MAINTAINER {{ $MAINTAINER }}
+MAINTAINER Ansible Playbook Bundle Community
 
 LABEL "com.redhat.ansibleapp.version"="0.1.0"
 LABEL "com.redhat.ansibleapp.spec"=\
@@ -11,6 +11,5 @@ IHRvIGRlcGxveSBjb250YWluZXJzIHRvCiAgICBkZWZhdWx0OiB3b3JkcHJlc3MtaGEK"
 ADD roles /opt/ansible/roles
 ADD ansibleapp /opt/ansibleapp
 
-RUN useradd -u 1001 -r -g 0 -M -b /opt/ansibleapp -s /sbin/nologin -c "ansibleapp user" ansibleapp
-RUN chown -R 1001:0 /opt/{ansible,ansibleapp}
-USER 1001
+RUN chown -R ansibleapp: /opt/{ansible,ansibleapp}
+USER ansibleapp

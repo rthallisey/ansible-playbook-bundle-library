@@ -1,5 +1,5 @@
 FROM ansibleapp/ansibleapp-base
-# MAINTAINER {{ $MAINTAINER }}
+MAINTAINER Ansible Playbook Bundle Community
 
 LABEL "com.redhat.ansibleapp.version"="0.1.0"
 LABEL "com.redhat.ansibleapp.spec"=\
@@ -35,14 +35,12 @@ bmFtZTogdmVyc2lvbgogICAgZGVzY3JpcHRpb246IENoYW5nZSB0aGUgcm91dGUgaG9zdG5hbWUg\
 dG8gbWF0Y2ggdGhlIGNlcnRpZmljYXRlX2NuCiAgICB0eXBlOiBzdHJpbmcKICAgIGRlZmF1bHQ6\
 IDEuMTQK"
 
-ADD foreman /opt/foreman 
-RUN yum -y install openssl && yum clean all
+ADD foreman /opt/foreman
+RUN yum -y install openssl \
+    && yum clean all
 
 ADD ansible /opt/ansible
 ADD ansibleapp /opt/ansibleapp
 
-COPY entrypoint.sh /usr/bin
-
-RUN useradd -u 1001 -r -g 0 -M -b /opt/ansibleapp -s /sbin/nologin -c "ansibleapp user" ansibleapp
-RUN chown -R 1001:0 /opt/{ansible,ansibleapp,foreman}
-USER 1001
+RUN chown -R ansibleapp: /opt/{ansible,ansibleapp,foreman}
+USER ansibleapp
