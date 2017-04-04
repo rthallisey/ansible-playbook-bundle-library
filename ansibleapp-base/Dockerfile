@@ -9,8 +9,8 @@ RUN yum -y install epel-release centos-release-openshift-origin \
 RUN echo "localhost ansible_connection=local" >> /etc/ansible/hosts
 RUN sed -i 's|#roles_path.*$|roles_path = /opt/ansible/roles|' /etc/ansible/ansible.cfg
 
-RUN mkdir /opt/ansibleapp
+RUN mkdir /opt/ansibleapp /etc/asb
 
-COPY oc-login.sh entrypoint.sh /usr/bin/
+COPY oc-login.sh entrypoint.sh broker-bind-creds bind-init /usr/bin/
 
 ENTRYPOINT ["entrypoint.sh"]

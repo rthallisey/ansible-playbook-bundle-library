@@ -19,11 +19,13 @@ provision_params = json.loads(raw_provision_params)
 
 
 def output_error(error):
-    print '<BIND_ERROR>%s</BIND_ERROR>' % error
+    with open('/etc/asb/bind-creds', 'w') as f:
+        f.write('<BIND_ERROR>%s</BIND_ERROR>' % error)
 
 
 def output_payload(payload):
-    print '<BIND_CREDENTIALS>%s</BIND_CREDENTIALS>' % payload
+    with open('/etc/asb/bind-creds', 'w') as f:
+        f.write('<BIND_CREDENTIALS>%s</BIND_CREDENTIALS>' % payload)
 
 
 def malformed_param_input():
